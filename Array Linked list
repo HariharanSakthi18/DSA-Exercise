@@ -1,0 +1,81 @@
+#include <stdio.h>
+
+int main()
+{
+    int Size,i,search,value,pos,ch;
+    printf("Enter the Size");
+    scanf("%d",&Size);
+   
+    int arr[100];
+   
+    printf("Enter the Value: ");
+   
+    for(int i=0;i<Size;i++){
+        scanf("%d",&arr[i]);
+    }
+   
+    int flag = 0;
+   
+    do{
+        printf("\n 1.Index");
+        printf("\n 2.Delete");
+        printf("\n 3.Search");
+        printf("\n 4.Display");
+        printf("\n 5.Exit");
+        printf("\nEnter your choice: ");
+        scanf("%d", &ch);
+
+        switch(ch){
+            case 1:
+                printf("enter the value: ");
+                scanf("%d",&value);
+                printf("Enter the Postion: ");
+                scanf("%d",&pos);
+                Size++;
+                for(i=Size-1;i>pos;i--){
+                    arr[i]=arr[i-1];
+                }
+                arr[pos]=value;
+                printf("\n value %d is inserted in %d",value,pos);
+                break;
+           
+            case 2:
+                printf("Enter the position which you want to Delete: ");
+                scanf("%d",&pos);
+               
+                for(i=pos;i<Size;i++){
+                    arr[pos]=arr[pos+1];
+                }
+                Size--;
+                printf("Delete in pos %d",pos);
+                break;
+           
+            case 3:
+                printf("Enter the Search value: ");
+                scanf("%d",&search);
+               
+                for(i=0;i<Size;i++){
+                    if(arr[i]==search){
+                        flag=1;
+                    }
+                }
+                if(flag=1){
+                    printf("Value Found");
+                }else{
+                    printf("Not Found");
+                }
+                break;
+           
+            case 4:
+                for(i=0;i<Size;i++){
+                    printf("%d",arr[i]);
+                }
+                break;
+           
+            case 5:
+                break;
+        }
+       
+    }while(ch!=5);
+    return 0;
+}
